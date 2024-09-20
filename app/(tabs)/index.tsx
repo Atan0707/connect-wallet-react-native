@@ -1,11 +1,16 @@
-import { Image, StyleSheet, Platform, View, Text } from 'react-native';
+import { Image, StyleSheet, Platform, View, Text, Button } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
+import { useEffect, useState } from 'react';
+
 export default function HomeScreen() {
+
+  const [count, setCount] = useState(0);
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -16,11 +21,11 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-      <ThemedText type="title" className='text-black'>Hi Atan!</ThemedText>
+      <ThemedText type="title" style={styles.atan}>Hi Atan!</ThemedText>
       <ThemedText type="title">Welcome to your new app!</ThemedText>
         <HelloWave />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
+      <ThemedView style={styles.stepContainer} className='text-black'>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
         <ThemedText>
           Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
@@ -47,6 +52,14 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+      <ThemedView>
+        <Button
+          title="Go to Explore"
+          onPress={() => {
+            setCount(count + 1);
+          }} />
+        <ThemedText style={styles.count}>Count: {count}</ThemedText>
+      </ThemedView>
     </ParallaxScrollView>
   );
 }
@@ -68,4 +81,11 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
   },
+  atan: {
+    color: 'red',
+  },
+  count: {
+    color: 'white',
+    paddingTop: 20,
+  }
 });
