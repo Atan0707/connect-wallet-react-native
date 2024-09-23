@@ -32,6 +32,15 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="connectWallet"
+        options={{
+          title: 'Connect Wallet',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'cloud' : 'cloud-outline'} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
