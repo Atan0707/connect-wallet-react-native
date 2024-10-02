@@ -1,9 +1,10 @@
 import '@walletconnect/react-native-compat'
 import { WagmiProvider } from 'wagmi'
-import { mainnet, polygon, arbitrum } from '@wagmi/core/chains'
+import { sepolia } from '@wagmi/core/chains'
+// mainnet, polygon, arbitrum, 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createAppKit, defaultWagmiConfig, AppKit } from '@reown/appkit-wagmi-react-native'
-import { AppKitButton } from '@reown/appkit-wagmi-react-native'
+import { AppKitButton, AccountButton } from '@reown/appkit-wagmi-react-native'
 import { StyleSheet, View } from 'react-native';
 // 0. Setup queryClient
 const queryClient = new QueryClient()
@@ -25,7 +26,7 @@ const metadata = {
   }
 }
 
-const chains = [mainnet, polygon, arbitrum] as const
+const chains = [sepolia] as const
 
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 
@@ -33,7 +34,7 @@ const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 createAppKit({
   projectId,
   wagmiConfig,
-  defaultChain: mainnet, // Optional
+  defaultChain: sepolia, // Optional
   enableAnalytics: true // Optional - defaults to your Cloud configuration
 })
 
@@ -44,7 +45,7 @@ export default function App() {
         <WagmiProvider config={wagmiConfig}>
           <QueryClientProvider client={queryClient}>
             <AppKit />
-            <AppKitButton />
+            <AppKitButton balance='show'/>
           </QueryClientProvider>
         </WagmiProvider>
       </ThemedView>
