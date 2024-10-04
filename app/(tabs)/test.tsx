@@ -9,7 +9,7 @@ import { createAppKit, defaultConfig, AppKit } from '@reown/appkit-ethers-react-
 import { AppKitButton } from '@reown/appkit-ethers-react-native'
 
 // 1. Get projectId from https://cloud.reown.com
-const projectId = 'Ydcc4482bd0a2041c9f7c640ed274c8a2'
+const projectId = 'dcc4482bd0a2041c9f7c640ed274c8a2'
 
 // 2. Create config
 const metadata = {
